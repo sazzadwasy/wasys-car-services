@@ -45,11 +45,11 @@ const Login = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control ref={passRef} type="password" placeholder="Password" required />
                     </Form.Group>
-                    <Button className='text-center' variant="primary" type="submit">
+                    <Button className='text-center w-50' variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
-                <p>New to Wasy's car ?<Link to="/register" onClick={navigateRegister} className='text-danger pe-auto text-decoration-none'>Please register.</Link></p>
+                <p className='mt-2'>New to Wasy's car ? <Link to="/register" onClick={navigateRegister} className='text-danger pe-auto text-decoration-none'> Please register.</Link></p>
                 <SocialLogin></SocialLogin>
             </div>
         </div>
