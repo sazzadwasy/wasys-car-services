@@ -1,0 +1,12 @@
+.service {
+    border: 2px solid silver;
+    padding: 8px;
+    text-align: center;
+}
+
+.book-btn {
+    background-color: #198754;
+    color: white;
+    padding: 10px 6px;
+    font-weight: 600;
+}
