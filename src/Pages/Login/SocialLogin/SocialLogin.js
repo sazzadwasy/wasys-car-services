@@ -10,13 +10,12 @@ import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const navigate = useNavigate()
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
     let errorElement;
-    if (error) {
-        errorElement = <div>
-            <p className='text-danger'>Error: {error.message}</p>
-        </div>
+    if (error || error1) {
+        errorElement = <p className='text-danger'>Error: {error?.message} {error1?.message}</p>
     }
-    if (user) {
+    if (user || user1) {
         navigate('/home')
     }
     return (
@@ -32,7 +31,7 @@ const SocialLogin = () => {
                 <br />
                 <button className='btn btn-secondary w-50  mb-2 p-2'><FontAwesomeIcon icon={faFacebook} className="mx-2" />Facebook sing in</button>
                 <br />
-                <button className='btn btn-warning w-50 p-2'><FontAwesomeIcon icon={faGithub} className="mx-2" />Github sing in</button>
+                <button onClick={() => signInWithGithub()} className='btn btn-warning w-50 p-2'><FontAwesomeIcon icon={faGithub} className="mx-2" />Github sing in</button>
             </div>
         </div>
     );
