@@ -40,7 +40,7 @@ const Register = () => {
                 <input type='password' name='password' id='' placeholder='Password' required />
                 <input onClick={() => setAgree(!agree)} type='checkbox' name='terms' id='terms' />
                 {/* <label className={agree ? 'ps-2' : 'text-danger ps-2'} htmlFor='terms'> Accept Wasys car all terms and conditions.</label> */}
-                <label className={`ps-2 ${agree ? '' : 'text-primary'}`} htmlFor='terms'> Accept Wasys car all terms and conditions.</label>
+                <label className={`ps-2 ${agree ? '' : 'text-danger'}`} htmlFor='terms'> Accept Wasys car all terms and conditions.</label>
                 <input
                     disabled={!agree}
                     className='btn btn-primary mt-2'
