@@ -1,4 +1,3 @@
-import { Button } from 'bootstrap';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
@@ -34,6 +33,15 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <Nav.Link as={Link} to="/about">About</Nav.Link>
+                            {
+                                user
+                                &&
+                                <>
+                                    <Nav.Link as={Link} to="/addservice">Add</Nav.Link>
+                                    <Nav.Link as={Link} to="/orders">Orders</Nav.Link>
+                                    <Nav.Link as={Link} to="/manage">Manage</Nav.Link>
+                                </>
+                            }
                             {user ?
                                 <button className='btn btn-success' onClick={handleSignout}>Sign out</button>
                                 :

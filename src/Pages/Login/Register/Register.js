@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import './Register.css'
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Loading from '../../Shared/Loading/Loading';
+import PageTitle from '../../../PageTitle/PageTitle';
 
 const Register = () => {
     const [agree, setAgree] = useState(false)
@@ -31,6 +32,7 @@ const Register = () => {
         const name = event.target.name.value
         const email = event.target.email.value
         const password = event.target.password.value
+        console.log({ email, password })
         // const agree = event.target.terms.checked
         // if(agree){}
         await createUserWithEmailAndPassword(email, password)
@@ -40,6 +42,7 @@ const Register = () => {
     }
     return (
         <div className='register-form'>
+            <PageTitle title='Register'></PageTitle>
             <h1 style={{ textAlign: 'center', color: '#0d6efd' }}>Please registeer</h1>
             <form onSubmit={handleRegister}>
                 <input type='text' name='name' id='' placeholder='Your name' />

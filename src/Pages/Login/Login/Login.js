@@ -1,13 +1,13 @@
-import { async } from '@firebase/util';
+
 import React, { useRef } from 'react';
-import { Alert, Button, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const emailRef = useRef('')
@@ -28,7 +28,6 @@ const Login = () => {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
     }
     if (user) {
-        console.log(user)
         navigate(from, { replace: true });
     }
 
@@ -36,7 +35,9 @@ const Login = () => {
         event.preventDefault()
         const email = emailRef.current.value
         const pass = passRef.current.value
+        console.log({ email, pass })
         signInWithEmailAndPassword(email, pass)
+
     }
     const navigateRegister = () => {
         navigate('/register')
@@ -54,6 +55,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Login - wasys car services</title>
+            </Helmet>
             <h1 className='text-primary text-center'>Please LogIn</h1>
             <div className='w-50 mx-auto'>
                 <Form onSubmit={handleSubmit}>
@@ -75,7 +79,6 @@ const Login = () => {
                     onClick={resetPassword}
                     className='text-primary pe-auto text-decoration-none btn btn-link'>Reset password</button></p>
                 <SocialLogin></SocialLogin>
-                <ToastContainer></ToastContainer>
             </div>
         </div>
     );
